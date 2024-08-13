@@ -12,12 +12,6 @@
         <script src="./xterm/xterm.js"></script>
         <script src="./xterm/xterm-addon-fit.js"></script>
         <script src="./xterm/xterm-addon-web-links.js"></script>
-        <script src="network.js"></script>
-        <!-- <script
-            defer
-            data-domain="webvm.io"
-            src="https://plausible.leaningtech.com/js/script.js"
-        ></script> -->
     </head>
 
     <body
@@ -198,7 +192,6 @@
                     );
                     return;
                 }
-                let networkInterface = setupNetworkInterface();
                 async function runTest(cx) {
                     var processCount = 0;
                     function handleProcessCreated() {
@@ -212,7 +205,6 @@
                             );
                         }
                     }
-                    // registerNetworkLogin(cx, networkInterface);
                     term.scrollToBottom();
 
                     async function cxLogAndRun(cheerpx, cmd, args, env) {
@@ -277,14 +269,14 @@
                         { type: "devs", dev: "", path: "/dev" },
                         { type: "proc", dev: "", path: "/proc" },
                     ],
-                    networkInterface: null,
+                    networkInterface: "not null",
                 }).then(runTest, failCallback);
             }
             async function loadCX() {
                 var script = document.createElement("script");
                 script.type = "text/javascript";
                 script.src =
-                    "https://cheerpxdemos.leaningtech.com/publicdeploy/20240809_151/cx.js";
+                    "https://cheerpxdemos.leaningtech.com/publicdeploy/20240812_152/cx.js";
                 script.addEventListener("load", runBash, false);
                 document.head.appendChild(script);
             }
